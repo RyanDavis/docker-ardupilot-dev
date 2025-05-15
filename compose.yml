@@ -1,0 +1,15 @@
+services:
+  ardupilot:
+    build: .
+    image: ardupilot-dev
+    container_name: ardupilot-dev
+    volumes:
+      - ./ardupilot:/home/ardupilot/ardupilot
+      - ./custom_firmware:/home/ardupilot/custom_firmware
+#    devices:
+#      - /dev/ttyACM0:/dev/ttyACM0  # For connecting to flight controller
+    stdin_open: true
+    tty: true
+    environment:
+      - DISPLAY=${DISPLAY}
+    network_mode: host
